@@ -1,14 +1,27 @@
 import React from "react";
-import { Button, Icon } from "semantic-ui-react"
+import _ from 'lodash';
+import { 
+  Button, 
+  Container, 
+  Segment, 
+  Grid, 
+} from "semantic-ui-react"
+
+import MyColumn from "./Column";
 
 const App = () => {
+  const renderMyColumns = _.times(9, (i) => (
+    <MyColumn key={i} />
+  ))
+
   return (
-    <div>
-      <Button animated="fade">
-        <Button.Content visible>Fang mich doch</Button.Content>
-        <Button.Content hidden>heheheha</Button.Content>
-      </Button>
-    </div>
+    <Container>
+      <Segment>
+        <Grid padded columns={3}>
+          {renderMyColumns}
+        </Grid>
+      </Segment>
+    </Container>
   )
 }
 
