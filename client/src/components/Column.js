@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Grid, Segment, Image } from "semantic-ui-react"
 
-const MyColumn = (key) => {
+const MyColumn = ({player, setPlayer}) => {
   const [square, setSquare] = useState('empty')
 
   const claimField = () => {
@@ -9,15 +9,17 @@ const MyColumn = (key) => {
       return alert("field is already claimed, choose another one!")
     }
 
-    setSquare("p1")
+    if(player === 1){
+      setSquare("p1")
+      setPlayer(2)
+    } else {
+      setSquare("p2")
+      setPlayer(1)
+    }
   }
 
   return (
-    <Grid.Column
-      key={key} 
-      onClick={() => claimField()}
-    >
-      
+    <Grid.Column onClick={() => claimField()}>
       <Segment basic>
         <Image src={`/images/square-${square}.png`}/>
       </Segment>

@@ -1,7 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import _ from 'lodash';
 import { 
-  Button, 
   Container, 
   Segment, 
   Grid, 
@@ -10,8 +9,10 @@ import {
 import MyColumn from "./Column";
 
 const App = () => {
+  const [player, setPlayer] = useState(1)
+
   const renderMyColumns = _.times(9, (i) => (
-    <MyColumn key={i} />
+    <MyColumn key={i} player={player} setPlayer={setPlayer}/>
   ))
 
   return (
