@@ -17,7 +17,7 @@ const App = () => {
   return (
     <Container>
       <Segment>
-        <Grid padded columns={3}>
+        <Grid columns={3}>
           {renderMyColumns}
         </Grid>
       </Segment>

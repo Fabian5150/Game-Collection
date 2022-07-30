@@ -1,22 +1,26 @@
 import React, { useState } from "react";
-import { Grid, Icon } from "semantic-ui-react"
+import { Grid, Segment, Image } from "semantic-ui-react"
 
 const MyColumn = (key) => {
-  const [color, setColor] = useState('grey')
-  const [icon, setIcon] = useState("square")
+  const [square, setSquare] = useState('empty')
 
   const claimField = () => {
-    if(color !== "grey"){
+    if(square !== "empty"){
       return alert("field is already claimed, choose another one!")
     }
 
-    setColor("red")
-    setIcon("close")
+    setSquare("p1")
   }
 
   return (
-    <Grid.Column color={color} key={key} onClick={() => claimField()}>
-      <Icon name={icon} size="massive" />
+    <Grid.Column
+      key={key} 
+      onClick={() => claimField()}
+    >
+      
+      <Segment basic>
+        <Image src={`/images/square-${square}.png`}/>
+      </Segment>
     </Grid.Column>
   )
 }
